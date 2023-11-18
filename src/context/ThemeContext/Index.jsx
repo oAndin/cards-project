@@ -1,17 +1,15 @@
 import { createContext, useState } from "react";
 
-
-// import the context 
-// const theme = useContext(ThemeContext);
-
 export const ThemeContext = createContext();
 
 // eslint-disable-next-line react/prop-types
 export const ThemeProvider = ({ children }) => {
 
   const [darkMode, setDarkMode] = useState(true);
-  let bgColor = darkMode ? 'dark-grey' : 'white';
-  let textColor = darkMode ? 'white' : 'dark-grey';
+  // const [bgColor, setBgColor] = useState('dark-grey')
+  // setBgColor(darkMode ? 'dark-grey' : 'white');
+  const textColor = darkMode ? 'white' : 'dark-grey';
+  const bgColor = darkMode ? 'dark-grey' : 'white';
 
   function toggleTheme() {
     setDarkMode(!darkMode);
