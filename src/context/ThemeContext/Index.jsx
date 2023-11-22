@@ -7,9 +7,9 @@ export const ThemeProvider = ({ children }) => {
 
   const [darkMode, setDarkMode] = useState(true);
   localStorage.setItem("darkMode", JSON.stringify(darkMode));
-  const bgColor = darkMode ? 'bg-dark-grey' : 'bg-easy-white';
-  const textColor = darkMode ? 'text-easy-white' : 'text-dark-grey';
-  const borderColor = darkMode ? 'border-easy-white' : 'border-dark-grey';
+  const bgColor = darkMode ? 'bg-grey-900' : 'bg-grey-200';
+  const textColor = darkMode ? 'text-grey-200' : 'text-grey-900';
+  const borderColor = darkMode ? 'border-grey-200' : 'border-grey-900';
 
   function toggleTheme() {
     setDarkMode(!darkMode);

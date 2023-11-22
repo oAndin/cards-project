@@ -5,6 +5,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import Home from './routes/Home/Index.jsx'
 import Error from './routes/Error/Index.jsx'
 import { ThemeProvider } from './context/ThemeContext/Index.jsx'
+import CardsPage from './routes/CardsPage/Index.jsx'
 
 const router = createBrowserRouter([
   {
@@ -14,6 +15,10 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home />
+      },
+      {
+        path: '/cards',
+        element: <CardsPage />
       },
     ],
     errorElement: <Error />
