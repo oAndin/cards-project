@@ -3,11 +3,11 @@ import { ThemeContext } from "../../context/ThemeContext/Index";
 
 const Footer = () => {
 
-  const { bgColor, textColor } = useContext(ThemeContext);
+  const { bgColor, textColor, borderColor } = useContext(ThemeContext);
 
   return (
     <>
-      <div className={`bg-${bgColor} text-${textColor}`}>
+      <div className={`flex items-center justify-between h-full w-full border-t-2 p-5 ${borderColor} ${bgColor} ${textColor} duration-500`}>
         <h1>Footer</h1>
       </div>
     </>

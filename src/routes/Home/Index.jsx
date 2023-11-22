@@ -5,7 +5,7 @@ const Home = () => {
   const { bgColor, textColor } = useContext(ThemeContext);
   return (
     <>
-      <div className={`w-full h-screen bg-${bgColor} text-${textColor}`}>
+      <div className={`w-full h-screen ${bgColor} ${textColor} duration-500`}>
         <h1>Home</h1>
       </div>
     </>

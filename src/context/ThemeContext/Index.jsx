@@ -6,10 +6,9 @@ export const ThemeContext = createContext();
 export const ThemeProvider = ({ children }) => {
 
   const [darkMode, setDarkMode] = useState(true);
-  // const [bgColor, setBgColor] = useState('dark-grey')
-  // setBgColor(darkMode ? 'dark-grey' : 'white');
-  const textColor = darkMode ? 'text-easy-white' : 'text-dark-grey';
+  localStorage.setItem("darkMode", JSON.stringify(darkMode));
   const bgColor = darkMode ? 'bg-dark-grey' : 'bg-easy-white';
+  const textColor = darkMode ? 'text-easy-white' : 'text-dark-grey';
   const borderColor = darkMode ? 'border-easy-white' : 'border-dark-grey';
 
   function toggleTheme() {
