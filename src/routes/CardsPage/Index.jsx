@@ -7,7 +7,7 @@ const CardsPage = () => {
 
   useEffect(() => {
     fetch('http:localhost/5000/cards')
-      .then((response) => response  .json())
+      .then((response) => response.json())
       .then((data) => {
         setCards(data)
         console.log(data)
@@ -42,6 +42,7 @@ const CardsPage = () => {
             <div key={card.id}>
               <h1>{card.title}</h1>
               <h3>{card.question}</h3>
+              <h5>{card.answer}</h5>
             </div>
           ))
         )}
