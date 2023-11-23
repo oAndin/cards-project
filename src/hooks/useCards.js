@@ -1,12 +1,10 @@
-import axios from "axios";
+// import API from "../services";
 
-const useCards = async () => {
-  try {
-    const response = await axios.get('http://localhost/5000/cards');
-    console.log(response);
-  } catch (error) {
-    console.log(error);
-  }
-}
+// const useCards = async () => {
+//   const response = await API.get('/cards')
+//   console.log(response);
 
-export default useCards;
+//   return response.data;
+// }
+
+// export default useCards;
