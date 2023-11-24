@@ -1,10 +1,9 @@
 // import API from "../services";
 
-// const useCards = async () => {
-//   const response = await API.get('/cards')
-//   console.log(response);
+// const useCards = () => {
+//   const response = API.get('/cards');
 
-//   return response.data;
+//   return response;
 // }
 
 // export default useCards;
