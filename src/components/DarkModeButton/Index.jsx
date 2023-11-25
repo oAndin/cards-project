@@ -9,7 +9,7 @@ const DarkModeButton = () => {
 
   const { toggleTheme, bgColor, darkMode, borderColor } = useContext(ThemeContext);
   const position = darkMode ? 'left-0' : 'left-full -translate-x-full';
-  const darkBgColor = darkMode ? 'bg-gray-200' : 'bg-gray-700';
+  const darkBgColor = darkMode ? 'bg-gray-200' : 'bg-gray-500';
   // ${borderColor}
   return (
     <>
