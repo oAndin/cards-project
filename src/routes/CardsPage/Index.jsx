@@ -3,7 +3,6 @@ import { MdArrowBackIos } from "react-icons/md";
 import { useEffect } from "react";
 import { useState } from "react";
 import API from "../../services";
-import 'swiper/css/effect-cards';
 
 const CardsPage = () => {
 

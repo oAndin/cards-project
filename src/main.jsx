@@ -6,6 +6,7 @@ import Home from './routes/Home/Index.jsx'
 import Error from './routes/Error/Index.jsx'
 import { ThemeProvider } from './context/ThemeContext/Index.jsx'
 import CardsPage from './routes/CardsPage/Index.jsx'
+import NewCards from './routes/NewCards/Index.jsx'
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
       {
         path: '/cards',
         element: <CardsPage />
+      },
+      {
+        path: '/newcards',
+        element: <NewCards />
       },
     ],
     errorElement: <Error />

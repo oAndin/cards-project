@@ -11,6 +11,9 @@ const Navbar = () => {
         <li className="duration-300 hover:text-purple-500">
           <Link to='/cards'>Cards</Link>
         </li>
+        <li className="duration-300 hover:text-purple-500">
+          <Link to='/newcards'>New Card</Link>
+        </li>
       </ul>
     </>
   )
