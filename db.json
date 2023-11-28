@@ -3,7 +3,7 @@
     {
       "title": "Titulo 1",
       "id": "1",
-      "category": "",
+      "category": "test",
       "question": "Pergunta um?",
       "answer": "Resposta número um, Resposta número um, Resposta número um, Resposta número um, Resposta número um, Resposta número um, Resposta número um, Resposta número um, Resposta número um, Resposta número um, Resposta número um, Resposta número um, Resposta número um, Resposta número um, Resposta número um, Resposta número um, Resposta número um"
     },
@@ -20,6 +20,11 @@
       "category": "",
       "question": "Pergunta três?",
       "answer": "Resposta número três, Resposta número três, Resposta número três, Resposta número três, Resposta número três, Resposta número três, Resposta número três, Resposta número três, Resposta número três, Resposta número três, Resposta número três, Resposta número três, Resposta número três, Resposta número três, Resposta número três, Resposta número três, Resposta número três"
+    }
+  ],
+  "category": [
+    {
+      "name": "test"
     }
   ]
 }
