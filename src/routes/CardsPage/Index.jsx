@@ -25,10 +25,11 @@ const CardsPage = () => {
       className="border-2 border-black p-5 m-5">
       <h1>{card.title}</h1>
       <h3>{card.question}</h3>
-      <div className="flex gap-2">
-        <label htmlFor="">{showAnswer ? 'Hide answer' : 'Show answer'}</label>
-        <input type="checkbox" name="" id="" onClick={() => setShowerAnswer(!showAnswer)} />
-      </div>
+      <button
+        className="border-2 border-black"
+        onClick={() => setShowerAnswer(!showAnswer)}>
+        {showAnswer ? 'Hide answer' : 'Show answer'}
+      </button>
       {
         showAnswer ? <h5>{card.answer}</h5> : ''
       }

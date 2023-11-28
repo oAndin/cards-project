@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Input from "./Input/Index";
 
 const Form = () => {
 
@@ -44,6 +45,14 @@ const Form = () => {
             className="border-2 border-black">
             Create new card
           </button>
+        </form>
+        <form action="">
+          <Input
+            type="text"
+            text="Title"
+            name="name"
+            placeholder="Title"
+          />
         </form>
       </div>
     </>
