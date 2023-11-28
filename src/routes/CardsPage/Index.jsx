@@ -7,6 +7,8 @@ import API from "../../services";
 const CardsPage = () => {
 
   const [cards, setCards] = useState([]);
+  const [showAnswer, setShowerAnswer] = useState(false);
+  const [position, setPosition] = useState(0);
 
   const getCards = async () => {
     try {
@@ -20,18 +22,22 @@ const CardsPage = () => {
 
   const carouselCards = cards.map(card => (
     <div key={card.id}
-      className="border-2 border-black min-w-1/2 w-1/4 max-w-full h-1/2 p-5 m-5">
+      className="border-2 border-black p-5 m-5">
       <h1>{card.title}</h1>
       <h3>{card.question}</h3>
-      <h5>{card.answer}</h5>
+      <div className="flex gap-2">
+        <label htmlFor="">{showAnswer ? 'Hide answer' : 'Show answer'}</label>
+        <input type="checkbox" name="" id="" onClick={() => setShowerAnswer(!showAnswer)} />
+      </div>
+      {
+        showAnswer ? <h5>{card.answer}</h5> : ''
+      }
     </div>
   ));
 
   useEffect(() => {
     getCards();
   }, []);
-
-  const [position, setPosition] = useState(0);
 
   return (
     <>
