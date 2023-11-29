@@ -4,7 +4,7 @@ const Input = ({ type, text, name, placeholder, handleOnChange, value }) => {
   return (
     <>
       <div className="border-2 border-black flex flex-col">
-        <label htmlFor="title">{text}:</label>
+        <label htmlFor={name}>{text}:</label>
         <input
           id={name}
           type={type}

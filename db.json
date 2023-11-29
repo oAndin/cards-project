@@ -24,7 +24,16 @@
   ],
   "category": [
     {
+      "id": "1",
       "name": "test"
+    },
+    {
+      "id": "2",
+      "name": "test 1"
+    },
+    {
+      "id": "3",
+      "name": "test 2"
     }
   ]
 }

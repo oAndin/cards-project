@@ -1,7 +1,10 @@
 import { useState } from "react";
 import Input from "./Input/Index";
+import Select from "./Select/Index";
+import SubmitButton from "./SubmitButton/Index";
 
-const Form = () => {
+// eslint-disable-next-line react/prop-types
+const Form = ({ btnText }) => {
 
   const [newCategory, setNewCategory] = useState(false);
 
@@ -53,6 +56,31 @@ const Form = () => {
             name="name"
             placeholder="Title"
           />
+          <Input
+            type="text"
+            text="Question"
+            name="question"
+            placeholder="Question"
+          />
+          {
+            newCategory ?
+              <Input
+                type="text"
+                text="new category"
+                name="newCategory"
+                placeholder="new category"
+              />
+              :
+              <Select
+                name="category"
+                text="category"
+              />
+          }
+          <div className="flex">
+            <input type="checkbox" name="" id="" onClick={() => setNewCategory(!newCategory)} />
+            <p>New category?</p>
+          </div>
+          <SubmitButton text={btnText} />
         </form>
       </div>
     </>
