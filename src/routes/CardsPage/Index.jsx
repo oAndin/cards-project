@@ -31,7 +31,7 @@ const CardsPage = () => {
         {showAnswer ? 'Hide answer' : 'Show answer'}
       </button>
       {
-        showAnswer ? <h5>{card.answer}</h5> : ''
+        showAnswer ? <h5>{card.answer}</h5> : '' 
       }
     </div>
   ));

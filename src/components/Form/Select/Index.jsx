@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import API from "../../../services";
 
 // eslint-disable-next-line react/prop-types
-const Select = ({ text, name, options, handleOnChange, value }) => {
+const Select = ({ text, name, handleOnChange, value }) => {
 
   const [categories, setCategories] = useState([]);
 
@@ -24,7 +24,12 @@ const Select = ({ text, name, options, handleOnChange, value }) => {
     <>
       <div className="border-2 border-black flex flex-col">
         <label htmlFor={name}>{text}:</label>
-        <select name={name} id={name}>
+        <select
+          name={name}
+          id={name}
+          onChange={handleOnChange}
+          value={value}>
+          <option>Select an category</option>
           {
             categories.map(category => (
               <option value={category.name} key={category.id}>{category.name}</option>
