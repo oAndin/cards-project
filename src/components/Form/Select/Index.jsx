@@ -25,6 +25,7 @@ const Select = ({ text, name, handleOnChange, value }) => {
       <div className="border-2 border-black flex flex-col">
         <label htmlFor={name}>{text}:</label>
         <select
+          required
           name={name}
           id={name}
           onChange={handleOnChange}

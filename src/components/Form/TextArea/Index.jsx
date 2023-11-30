@@ -5,6 +5,7 @@ const TextArea = ({ text, placeholder, name, handleOnChange, value }) => {
       <div className="border-2 border-black flex flex-col">
         <label htmlFor={name}>{text}:</label>
         <textarea
+          required
           name={name}
           id={name}
           placeholder={placeholder}

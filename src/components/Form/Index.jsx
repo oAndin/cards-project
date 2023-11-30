@@ -3,6 +3,7 @@ import Input from "./Input/Index";
 import Select from "./Select/Index";
 import SubmitButton from "./SubmitButton/Index";
 import TextArea from "./TextArea/Index";
+import API from "../../services";
 
 // eslint-disable-next-line react/prop-types
 const Form = ({ btnText }) => {
@@ -14,16 +15,49 @@ const Form = ({ btnText }) => {
   const [answer, setAnswer] = useState('');
   // const [card, setCard] = useState({});
 
-  // function createCard() {}
+  function handleCategory() {
+    newCategory ?
+      API.post('/category', {
+        category
+      })
+      :
+      category;
+  }
+
+  function submit(e) {
+    e.preventDefault();
+    API.post('/cards', {
+      title,
+      category,
+      question,
+      answer,
+      // newCategory ? post new category
+      //   { newCategory ? 
+      //   API.post('/category',{
+      //     category
+      //   })
+      //   :
+      //   category
+      // }, 
+    },
+      {
+        headers: {
+          'Content-type': 'application/json'
+        },
+      }
+    )
+  }
   return (
     <>
       <div className="h-screen w-full flex items-center justify-center">
-        <form action="">
+        <form
+          onSubmit={() => { submit, handleCategory }}>
           <Input
             type="text"
             text="Title"
             name="name"
             placeholder="Title"
+            // value={card.title ? card.title : ''}
             handleOnChange={(e) => setTitle(e.target.value)}
           />
           <Input
@@ -31,6 +65,7 @@ const Form = ({ btnText }) => {
             text="Question"
             name="question"
             placeholder="Question"
+            // value={}
             handleOnChange={(e) => setQuestion(e.target.value)}
           />
           {
@@ -39,13 +74,16 @@ const Form = ({ btnText }) => {
                 type="text"
                 text="new category"
                 name="newCategory"
-                placeholder="new category"
-                handleOnChange={(e) => setCategory(e.target.value)}
+                placeholder="New category"
+              // value={}
+
+              // handleOnChange={(e) => setCategory(e.target.value)}
               />
               :
               <Select
                 name="category"
-                text="category"
+                text="Category"
+                // value={}
                 handleOnChange={(e) => setCategory(e.target.value)}
               />
           }
@@ -57,6 +95,7 @@ const Form = ({ btnText }) => {
             text="Answer"
             placeholder="Answer"
             name="answer"
+            // value={}
             handleOnChange={(e) => setAnswer(e.target.value)} />
           <SubmitButton text={btnText}
           // onClick={() => createCard}

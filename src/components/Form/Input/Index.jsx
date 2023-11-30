@@ -6,6 +6,7 @@ const Input = ({ type, text, name, placeholder, handleOnChange, value }) => {
       <div className="border-2 border-black flex flex-col">
         <label htmlFor={name}>{text}:</label>
         <input
+          required
           id={name}
           type={type}
           name={name}
