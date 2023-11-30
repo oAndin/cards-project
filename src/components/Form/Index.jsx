@@ -1,57 +1,65 @@
 import { useState } from "react";
 import Input from "./Input/Index";
+import Select from "./Select/Index";
+import SubmitButton from "./SubmitButton/Index";
+import TextArea from "./TextArea/Index";
 
-const Form = () => {
+// eslint-disable-next-line react/prop-types
+const Form = ({ btnText }) => {
 
   const [newCategory, setNewCategory] = useState(false);
+  const [title, setTitle] = useState('');
+  const [question, setQuestion] = useState('');
+  const [category, setCategory] = useState('');
+  const [answer, setAnswer] = useState('');
+  // const [card, setCard] = useState({});
 
+  // function createCard() {}
   return (
     <>
       <div className="h-screen w-full flex items-center justify-center">
-        <form action="" className="border-2 border-black flex flex-col gap-2 w-1/3 p-4  bg-grey-500">
-          <div className="border-2 border-black flex flex-col">
-            <label htmlFor="title">Title text</label>
-            <input type="text" id="title" placeholder="Title" />
-          </div>
-          <div className="border-2 border-black flex flex-col">
-            <label htmlFor="question">Question text</label>
-            <input type="text" id="question" placeholder="Question" />
-          </div>
-          <div id="category?">
-            {
-              newCategory ?
-                <div className="flex flex-col border-2 border-black">
-                  <label htmlFor="newCategory">New category?</label>
-                  <input type="text" id="newCategory" placeholder="New category" />
-                </div>
-                :
-                <div className="flex flex-col border-2 border-black">
-                  <label htmlFor="category">Category</label>
-                  <select name="" id="category">
-                    <option value="test">Test</option>
-                  </select>
-                </div>
-            }
-            <div className="flex">
-              <input type="checkbox" name="" id="" onClick={() => setNewCategory(!newCategory)} />
-              <p>New category?</p>
-            </div>
-            <div>
-              <label htmlFor="answer">Answer</label>
-              <textarea name="answer" id="answer" className="flex w-full" cols="30" rows="5"></textarea>
-            </div>
-          </div>
-          <button onClick={() => console.log("created")}
-            className="border-2 border-black">
-            Create new card
-          </button>
-        </form>
         <form action="">
           <Input
             type="text"
             text="Title"
             name="name"
             placeholder="Title"
+            handleOnChange={(e) => setTitle(e.target.value)}
+          />
+          <Input
+            type="text"
+            text="Question"
+            name="question"
+            placeholder="Question"
+            handleOnChange={(e) => setQuestion(e.target.value)}
+          />
+          {
+            newCategory ?
+              <Input
+                type="text"
+                text="new category"
+                name="newCategory"
+                placeholder="new category"
+                handleOnChange={(e) => setCategory(e.target.value)}
+              />
+              :
+              <Select
+                name="category"
+                text="category"
+                handleOnChange={(e) => setCategory(e.target.value)}
+              />
+          }
+          <div className="flex">
+            <input type="checkbox" name="" id="" onClick={() => setNewCategory(!newCategory)} />
+            <p>New category?</p>
+          </div>
+          <TextArea
+            text="Answer"
+            placeholder="Answer"
+            name="answer"
+            handleOnChange={(e) => setAnswer(e.target.value)} />
+          <SubmitButton text={btnText}
+          // onClick={() => createCard}
           />
         </form>
       </div>
