@@ -12,6 +12,9 @@ const Form = ({ btnText }) => {
   const [question, setQuestion] = useState('');
   const [category, setCategory] = useState('');
   const [answer, setAnswer] = useState('');
+  // const [card, setCard] = useState({});
+
+  // function createCard() {}
   return (
     <>
       <div className="h-screen w-full flex items-center justify-center">
@@ -55,7 +58,9 @@ const Form = ({ btnText }) => {
             placeholder="Answer"
             name="answer"
             handleOnChange={(e) => setAnswer(e.target.value)} />
-          <SubmitButton text={btnText} />
+          <SubmitButton text={btnText}
+          // onClick={() => createCard}
+          />
         </form>
       </div>
     </>
