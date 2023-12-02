@@ -1,10 +1,13 @@
 // import useCards frm "../../hooks/useCards";
 import { MdArrowBackIos } from "react-icons/md";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { useState } from "react";
 import API from "../../services";
+import { ThemeContext } from "../../context/ThemeContext/Index";
 
 const CardsPage = () => {
+
+  const { bgColor, textColor, secondBgColor, borderColor, secondaryTextColor } = useContext(ThemeContext);
 
   const [cards, setCards] = useState([]);
   const [showAnswer, setShowerAnswer] = useState(false);
@@ -22,7 +25,7 @@ const CardsPage = () => {
 
   const carouselCards = cards.map(card => (
     <div key={card.id}
-      className="border-2 border-black p-5 m-5">
+      className={`border-2 border-black h-full max-w-lg p-5 m-5 ${secondBgColor} ${borderColor} ${secondaryTextColor}`} >
       <h1>{card.title}</h1>
       <h3>{card.question}</h3>
       <button
@@ -31,24 +34,32 @@ const CardsPage = () => {
         {showAnswer ? 'Hide answer' : 'Show answer'}
       </button>
       {
-        showAnswer ? <h5>{card.answer}</h5> : '' 
+        showAnswer ? <h5>{card.answer}</h5> : ''
       }
-    </div>
+    </div >
   ));
 
   useEffect(() => {
     getCards();
   }, []);
-
   return (
     <>
-      <div className="h-screen p-10 flex items-center justify-center">
+      <div className={`h-screen p-10 flex items-center justify-center ${bgColor}`}>
         <div className="flex items-center justify-center">
-          <MdArrowBackIos className="text-5xl hover:scale-125 duration-300 items-center"
-            onClick={() => setPosition(position === 0 ? 0 : position - 1)} />
+          {
+            position > 0 && (
+              <MdArrowBackIos className={`text-5xl hover:scale-125 duration-300 items-center `}
+                onClick={() => setPosition(position === 0 ? 0 : position - 1)} />
+            )
+          }
           {carouselCards[position]}
-          <MdArrowBackIos className="rotate-180 text-5xl hover:scale-125 duration-300 items-center"
-            onClick={() => setPosition(position + 1 === carouselCards.length ? position : position + 1)} />
+          {
+            position < cards.length - 1 && (
+              <MdArrowBackIos className="rotate-180 text-5xl hover:scale-125 duration-300 items-center"
+                onClick={() => setPosition(position + 1 === carouselCards.length ? position : position + 1)} />
+            )
+          }
+
         </div>
         {/* 
         {cards ? (
