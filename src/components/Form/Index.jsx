@@ -6,57 +6,48 @@ import TextArea from "./TextArea/Index";
 import API from "../../services";
 
 // eslint-disable-next-line react/prop-types
-const Form = ({ btnText }) => {
+const Form = ({ btnText, handleOnSubmit }) => {
 
   const [newCategory, setNewCategory] = useState(false);
   const [title, setTitle] = useState('');
   const [question, setQuestion] = useState('');
   const [category, setCategory] = useState('');
   const [answer, setAnswer] = useState('');
-  // const [card, setCard] = useState({});
 
-  function handleCategory() {
-    newCategory ?
-      API.post('/category', {
-        category
-      })
-      :
-      category;
-  }
-
-  function submit(e) {
-    e.preventDefault();
-    API.post('/cards', {
-      title,
-      category,
-      question,
-      answer,
-      // newCategory ? post new category
-      //   { newCategory ? 
-      //   API.post('/category',{
-      //     category
-      //   })
-      //   :
-      //   category
-      // }, 
-    },
-      {
-        headers: {
-          'Content-type': 'application/json'
-        },
-      }
-    )
-  }
+  // function submit(e) {
+  //   e.preventDefault();
+  //   API.post('/cards', {
+  //     title,
+  //     category,
+  //     question,
+  //     answer,
+  //     // newCategory ? post new category
+  //     //   { newCategory ? 
+  //     //   API.post('/category',{
+  //     //     category
+  //     //   })
+  //     //   :
+  //     //   category
+  //     // }, 
+  //   },
+  //     {
+  //       headers: {
+  //         'Content-type': 'application/json'
+  //       },
+  //     }
+  //   )
+  // }
   return (
     <>
       <div className="h-screen w-full flex items-center justify-center">
         <form
-          onSubmit={() => { submit, handleCategory }}>
+          onSubmit={() => { handleOnSubmit }}>
           <Input
             type="text"
             text="Title"
             name="name"
             placeholder="Title"
+            onBlur={title}
             // value={card.title ? card.title : ''}
             handleOnChange={(e) => setTitle(e.target.value)}
           />
@@ -75,9 +66,8 @@ const Form = ({ btnText }) => {
                 text="new category"
                 name="newCategory"
                 placeholder="New category"
-              // value={}
-
-              // handleOnChange={(e) => setCategory(e.target.value)}
+                // value={}
+                handleOnChange={(e) => setCategory(e.target.value)}
               />
               :
               <Select
@@ -97,9 +87,7 @@ const Form = ({ btnText }) => {
             name="answer"
             // value={}
             handleOnChange={(e) => setAnswer(e.target.value)} />
-          <SubmitButton text={btnText}
-          // onClick={() => createCard}
-          />
+          <SubmitButton text={btnText} />
         </form>
       </div>
     </>
