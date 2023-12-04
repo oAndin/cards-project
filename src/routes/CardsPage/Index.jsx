@@ -7,8 +7,7 @@ import { ThemeContext } from "../../context/ThemeContext/Index";
 
 const CardsPage = () => {
 
-  const { bgColor, textColor, secondBgColor, borderColor, secondaryTextColor } = useContext(ThemeContext);
-
+  const { bgColor, secondBgColor, borderColor, secondaryTextColor } = useContext(ThemeContext);
   const [cards, setCards] = useState([]);
   const [showAnswer, setShowerAnswer] = useState(false);
   const [position, setPosition] = useState(0);
@@ -22,6 +21,8 @@ const CardsPage = () => {
       console.log(error);
     }
   }
+
+  console.log();
 
   const carouselCards = cards.map(card => (
     <div key={card.id}
@@ -48,37 +49,23 @@ const CardsPage = () => {
         <div className="flex items-center justify-center">
           {
             position > 0 && (
-              <MdArrowBackIos className={`text-5xl hover:scale-125 duration-300 items-center `}
+              <MdArrowBackIos
+                acess-key='U+02192'
+                className={`text-5xl hover:scale-125 duration-300 items-center `}
                 onClick={() => setPosition(position === 0 ? 0 : position - 1)} />
             )
           }
           {carouselCards[position]}
           {
             position < cards.length - 1 && (
-              <MdArrowBackIos className="rotate-180 text-5xl hover:scale-125 duration-300 items-center"
+              <MdArrowBackIos
+                aria-keyshortcuts="ArrowRight"
+                className="rotate-180 text-5xl hover:scale-125 duration-300 items-center"
                 onClick={() => setPosition(position + 1 === carouselCards.length ? position : position + 1)} />
             )
           }
 
         </div>
-        {/* 
-        {cards ? (
-          cards.map(card => (
-            <div key={card.id}
-              className="border-2 border-black w-1/4 h-1/2 p-5 m-5">
-              <h1>{card.title}</h1>
-              <h3>{card.question}</h3>
-              <h5>{card.answer}</h5>
-            </div>
-          ))
-        ) : <h1>Create a new card</h1>}
-         */}
-        {/* <Swiper
-          effect={'cards'}
-          grabCursor={true}>
-          <SwiperSlide>{carouselCards[0]}</SwiperSlide>
-          <SwiperSlide>{carouselCards[1]}</SwiperSlide>
-        </Swiper> */}
       </div>
     </>
   )

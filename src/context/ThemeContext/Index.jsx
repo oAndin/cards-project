@@ -10,8 +10,11 @@ export const ThemeProvider = ({ children }) => {
 
   const primaryColor = darkMode ? '' : '';
   const secondaryColor = darkMode ? '' : '';
+  const cardBgColor = darkMode ? '' : '';
+  const cardTextColor = darkMode ? '' : '';
+  const cardBorderColor = darkMode ? '' : '';
   const bgColor = darkMode ? 'bg-grey-900 duration-500' : 'bg-grey-200 duration-500';
-  const secondBgColor = darkMode ? 'bg-grey-200 duration-500' : 'bg-grey-700 duration-500';
+  const secondBgColor = darkMode ? 'bg-grey-200 duration-500' : 'bg-grey-500 duration-500';
   const textColor = darkMode ? 'text-grey-200' : 'text-grey-900';
   const secondaryTextColor = darkMode ? 'text-grey-900' : 'text-grey-200';
   const borderColor = darkMode ? 'border-grey-200' : 'border-grey-900';
