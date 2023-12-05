@@ -32,15 +32,15 @@
   "category": [
     {
       "id": "1",
-      "name": "test"
+      "category": "test"
     },
     {
       "id": "2",
-      "name": "test 1"
+      "category": "test 1"
     },
     {
       "id": "3",
-      "name": "test 2"
+      "category": "test 2"
     },
     {
       "category": "New Category Test 1",

@@ -1,10 +1,6 @@
 // import { useEffect, useState } from "react";
 // import API from "../services";
 
-import { useEffect, useState } from "react"
-import API from "../services";
-
-
 // const GetCards = () => {
 
 //   const [cards, setCards] = useState([]);
@@ -27,22 +23,22 @@ import API from "../services";
 
 // export default GetCards;
 
-const getCards = () => {
-  const [cards, setCards] = useState([]);
+// const getCards = () => {
+//   const [cards, setCards] = useState([]);
 
-  const getCards = async () => {
-    try {
-      const response = await API.get('cards')
-      console.log(response.data);
-    } catch (error) {
-      console.log(error);
-    }
-    // finally {
-    // }
-  }
+//   const getCards = async () => {
+//     try {
+//       const response = await API.get('cards')
+//       console.log(response.data);
+//     } catch (error) {
+//       console.log(error);
+//     }
+//     // finally {
+//     // }
+//   }
 
-  useEffect(() => {
-    getCards();
-  }, [])
-}
-export default getCards;
+//   useEffect(() => {
+//     getCards();
+//   }, [])
+// }
+// export default getCards;

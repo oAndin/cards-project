@@ -25,7 +25,7 @@ const NewCard = () => {
   }, []);
 
 
-  async function submitWithCategory() {
+  async function submitWithNewCategory() {
     await API.post('category', {
       category,
     })
@@ -36,7 +36,7 @@ const NewCard = () => {
       answer
     })
   }
-  async function submitWithoutCategory() {
+  async function submitWithoutNewCategory() {
     await API.post('cards', {
       title,
       question,
@@ -48,9 +48,9 @@ const NewCard = () => {
 
   const submitNewCard = () => {
     newCategory ?
-      submitWithCategory()
+      submitWithNewCategory()
       :
-      submitWithoutCategory()
+      submitWithoutNewCategory()
   }
 
   return (
@@ -88,7 +88,8 @@ const NewCard = () => {
                   type='text'
                   name='category'
                   placeholder='New category'
-                  onChange={(e) => setCategory(e.target.value)} />
+                  onChange={(e) => setCategory(e.target.value)}
+                />
               </div>
               :
               <div className="border-2 border-black flex flex-col">
