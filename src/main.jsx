@@ -35,10 +35,10 @@ const router = createBrowserRouter([
         path: '/edit-list',
         element: <EditCardsList />
       },
-      {
-        path: `/category/${category}`,
-        element: <EditCardsList />
-      },
+      // {
+      //   path: `/category/${category}`,
+      //   element: <EditCardsList />
+      // },
     ],
     errorElement: <Error />
   }

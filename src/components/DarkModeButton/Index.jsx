@@ -1,7 +1,6 @@
 import { useContext } from "react"
 import { ThemeContext } from "../../context/ThemeContext/Index"
 import { IoSunny } from "react-icons/io5";
-
 import { IoMoonSharp } from "react-icons/io5";
 
 
@@ -13,7 +12,7 @@ const DarkModeButton = () => {
   // ${borderColor}
   return (
     <>
-      <div className="flex items-center gap-1">
+      <div className="flex items-center gap-1 ">
         <IoMoonSharp />
         <div onClick={() => {
           toggleTheme();

@@ -7,6 +7,7 @@ const Home = () => {
     <>
       <div className={`w-full h-screen ${bgColor} ${textColor} duration-500`}>
         <h1>Home</h1>
+        <h1>Hello World!</h1>
       </div>
     </>
   )
