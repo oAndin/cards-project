@@ -27,6 +27,13 @@
       "category": "New Category Test 1",
       "answer": "Answer test 1",
       "id": "oNQLyBx"
+    },
+    {
+      "title": "teste",
+      "question": "teste",
+      "category": "Teste novo 1 cat",
+      "answer": "teste",
+      "id": "j51LlMu"
     }
   ],
   "category": [
@@ -45,6 +52,10 @@
     {
       "category": "New Category Test 1",
       "id": "Lj88T8L"
+    },
+    {
+      "category": "Teste novo 1 cat",
+      "id": "Mi4zezy"
     }
   ]
 }

@@ -1,7 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import API from '../../services';
+import { ThemeContext } from '../../context/ThemeContext/Index';
 
 const NewCard = () => {
+
+  const { bgColor, secondBgColor } = useContext(ThemeContext)
 
   const [categories, setCategories] = useState([]);
   const [newCategory, setNewCategory] = useState(false);
@@ -55,10 +58,12 @@ const NewCard = () => {
 
   return (
     <>
-      <div>
+      <div className={`w-full h-screen flex items-center justify-center ${bgColor}`}>
         <form
-          onSubmit={() => { submitNewCard }}>
-          <div className="border-2 border-black flex flex-col">
+          className={`${secondBgColor} p-3 rounded-lg shadow-md space-y-2`}
+          onSubmit={() => { submitNewCard }}
+          onChange={() => console.log(title, question, category, answer)}>
+          <div className=" flex flex-col">
             <label htmlFor='title'>Title:</label>
             <input
               required
@@ -66,9 +71,10 @@ const NewCard = () => {
               type='text'
               name='title'
               placeholder='Title'
-              onChange={(e) => setTitle(e.target.value)} />
+              onChange={(e) => setTitle(e.target.value)}
+              className={`p-1`} />
           </div>
-          <div className="border-2 border-black flex flex-col">
+          <div className=" flex flex-col">
             <label htmlFor='question'>Question:</label>
             <input
               required
@@ -76,54 +82,69 @@ const NewCard = () => {
               type='text'
               name='question'
               placeholder='Question'
-              onChange={(e) => setQuestion(e.target.value)} />
+              onChange={(e) => setQuestion(e.target.value)}
+              className={`p-1`} />
           </div>
-          {
-            newCategory ?
-              <div className="border-2 border-black flex flex-col">
-                <label htmlFor='category'>category:</label>
-                <input
-                  required
-                  id='category'
-                  type='text'
-                  name='category'
-                  placeholder='New category'
-                  onChange={(e) => setCategory(e.target.value)}
-                />
-              </div>
-              :
-              <div className="border-2 border-black flex flex-col">
-                <label htmlFor='category'>Category:</label>
-                <select
-                  required
-                  name='category'
-                  id='category'
-                  onChange={(e) => { setCategory(e.target.value) }}>
-                  <option>Select an category</option>
-                  {
-                    categories.map(category => (
-                      <option value={category.name} key={category.id}>{category.name}</option>
-                    ))
-                  }
-                </select>
-              </div>
-          }
-          <div className="flex">
-            <input type="checkbox" name="" id="" onClick={() => setNewCategory(!newCategory)} />
-            <p>New category?</p>
+          <div>
+
+
+            {
+              newCategory ?
+                <div className=" flex flex-col">
+                  <label htmlFor='category'>Category:</label>
+                  <input
+                    required
+                    id='category'
+                    type='text'
+                    name='category'
+                    placeholder='New category'
+                    onChange={(e) => setCategory(e.target.value)}
+                    className={`p-1`} />
+                </div>
+                :
+                <div className=" flex flex-col">
+                  <label htmlFor='category'>Category:</label>
+                  <select
+                    className={``}
+                    required
+                    name='category'
+                    id='category'
+                    onChange={(e) => { setCategory(e.target.value) }}>
+                    <option>Select an category</option>
+                    {
+                      categories.map(category => (
+                        <option value={category.category} key={category.id}>{category.category}</option>
+                      ))
+                    }
+                  </select>
+                </div>
+            }
+            <div className="flex">
+              <input
+                type="checkbox"
+                name=""
+                id=""
+                onClick={() => setNewCategory(!newCategory)}
+                className={`p-1`} />
+              <p>New category?</p>
+            </div>
           </div>
-          <div className="border-2 border-black flex flex-col">
+          <div className=" flex flex-col">
             <label htmlFor='Answer'>Answer:</label>
             <textarea
               required
               name='Answer'
               id='Answer'
               placeholder='Answer'
-              onChange={(e) => { setAnswer(e.target.value) }}>
+              onChange={(e) => { setAnswer(e.target.value) }}
+              className={`p-1`}>
             </textarea>
           </div>
-          <div className="border-2 border-black flex items-center justify-center">
-            <button onClick={submitNewCard}>Create new card</button>
+          <div className=" flex items-center justify-center">
+            <button onClick={submitNewCard}
+              className={`border-2 border-black`}>
+              Create new card
+            </button>
           </div>
         </form >
       </div >

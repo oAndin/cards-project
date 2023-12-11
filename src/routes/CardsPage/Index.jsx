@@ -4,6 +4,9 @@ import { useContext, useEffect } from "react";
 import { useState } from "react";
 import API from "../../services";
 import { ThemeContext } from "../../context/ThemeContext/Index";
+import { BsThreeDotsVertical } from "react-icons/bs";
+import { FaRegTrashCan } from "react-icons/fa6";
+import { MdOutlineModeEdit } from "react-icons/md";
 
 const CardsPage = () => {
 
@@ -22,21 +25,39 @@ const CardsPage = () => {
     }
   }
 
-  console.log();
+  function removeProject(id) {
+    try {
+      const response = API.delete(`cards/${id}`, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      setCards(cards.filter((card) => card.id !== id))
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   const carouselCards = cards.map(card => (
     <div key={card.id}
-      className={`border-2 border-black h-full max-w-lg p-5 m-5 ${secondBgColor} ${borderColor} ${secondaryTextColor}`} >
-      <h1>{card.title}</h1>
-      <h3>{card.question}</h3>
-      <button
-        className="border-2 border-black"
-        onClick={() => setShowerAnswer(!showAnswer)}>
-        {showAnswer ? 'Hide answer' : 'Show answer'}
-      </button>
-      {
-        showAnswer ? <h5>{card.answer}</h5> : ''
-      }
+      className={`relative border-2 border-black h-full max-w-lg p-5 m-5 ${secondBgColor} ${borderColor} ${secondaryTextColor}`} >
+      <BsThreeDotsVertical
+        className={`absolute right-0 top-0`} />
+      <FaRegTrashCan />
+      <MdOutlineModeEdit />
+      <div
+        className={`border-2 border-black`}>
+        <h1>{card.title}</h1>
+        <h3>{card.question}</h3>
+        <button
+          className="border-2 border-black"
+          onClick={() => setShowerAnswer(!showAnswer)}>
+          {showAnswer ? 'Hide answer' : 'Show answer'}
+        </button>
+        {
+          showAnswer ? <h5>{card.answer}</h5> : ''
+        }
+      </div>
     </div >
   ));
 
