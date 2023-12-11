@@ -25,9 +25,9 @@ const CardsPage = () => {
     }
   }
 
-  function removeProject(id) {
+  function removeCard(id) {
     try {
-      const response = API.delete(`cards/${id}`, {
+      API.delete(`cards/${id}`, {
         headers: {
           'Content-Type': 'application/json'
         }
@@ -43,7 +43,9 @@ const CardsPage = () => {
       className={`relative border-2 border-black h-full max-w-lg p-5 m-5 ${secondBgColor} ${borderColor} ${secondaryTextColor}`} >
       <BsThreeDotsVertical
         className={`absolute right-0 top-0`} />
-      <FaRegTrashCan />
+      <FaRegTrashCan
+        className={`cursor-pointer`}
+        onClick={() => removeCard(card.id)} />
       <MdOutlineModeEdit />
       <div
         className={`border-2 border-black`}>
