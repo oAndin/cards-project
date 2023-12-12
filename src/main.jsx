@@ -24,15 +24,15 @@ const router = createBrowserRouter([
         element: <CardsPage />
       },
       {
-        path: '/new-cards',
+        path: '/new_cards',
         element: <NewCards />
       },
       {
-        path: '/edit-card',
+        path: '/edit_card/:id',
         element: <EditCard />
       },
       {
-        path: '/edit-list',
+        path: '/edit_list',
         element: <EditCardsList />
       },
       // {

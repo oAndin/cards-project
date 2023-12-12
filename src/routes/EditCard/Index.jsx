@@ -1,11 +1,11 @@
 import { useParams } from "react-router-dom";
 
-const EditCard = (id) => {
-  useParams(id);
+const EditCard = () => {
+  const { id } = useParams();
   return (
     <>
       <h1>
-        Edit Card: { }
+        Edit Card: {id}
         {/* Edit Card: {id} */}
       </h1>
     </>

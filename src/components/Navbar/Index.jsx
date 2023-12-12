@@ -12,13 +12,13 @@ const Navbar = () => {
           <Link to='/cards'>Cards</Link>
         </li>
         <li className="duration-300 hover:text-purple-500">
-          <Link to='/new-cards'>New Card</Link>
+          <Link to='/new_cards'>New Card</Link>
         </li>
         <li className="duration-300 hover:text-purple-500">
-          <Link to='/edit-card'>Edit Card</Link>
+          <Link to='/edit_card'>Edit Card</Link>
         </li>
         <li className="duration-300 hover:text-purple-500">
-          <Link to='/edit-list'>Edit List</Link>
+          <Link to='/edit_list'>Edit List</Link>
         </li>
       </ul>
     </>

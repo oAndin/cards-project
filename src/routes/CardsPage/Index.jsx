@@ -7,6 +7,7 @@ import { ThemeContext } from "../../context/ThemeContext/Index";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { FaRegTrashCan } from "react-icons/fa6";
 import { MdOutlineModeEdit } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 const CardsPage = () => {
 
@@ -30,9 +31,10 @@ const CardsPage = () => {
       API.delete(`cards/${id}`, {
         headers: {
           'Content-Type': 'application/json'
-        }
+        },
       })
       setCards(cards.filter((card) => card.id !== id))
+      setPosition(0)
     } catch (error) {
       console.log(error);
     }
@@ -46,7 +48,11 @@ const CardsPage = () => {
       <FaRegTrashCan
         className={`cursor-pointer`}
         onClick={() => removeCard(card.id)} />
-      <MdOutlineModeEdit />
+      <Link to={`/edit_card/${card.id}`}>
+        <MdOutlineModeEdit
+          className={`cursor-pointer`}
+        />
+      </Link>
       <div
         className={`border-2 border-black`}>
         <h1>{card.title}</h1>
