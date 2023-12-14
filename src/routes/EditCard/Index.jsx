@@ -5,19 +5,41 @@ import API from "../../services";
 const EditCard = () => {
   const { id } = useParams();
   const [card, setCard] = useState()
-  useEffect((id) => {
-    API.get(`/cards/${id}`)
-    const response = response.data;
-    setCard(response)
-  }, [])
+  const [title, setTitle] = useState();
+
+  const getCard = async (id) => {
+    try {
+      const response = await API.get(`cards/${id}`);
+      const data = response.data;
+      setCard(data)
+        ;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    getCard(id);
+  }, [id])
 
   console.log(card);
 
   return (
     <>
       <h1>
-        Edit Card: {id}
-        {/* Edit Card: {id} */}
+        {{ card } &&
+          <div>
+            Edit Card: {id}
+            {title}
+            {/* {card.title ?
+              <h1>Title: { }</h1>
+              :
+              'Loading'
+            } */}
+            {/* <h1>Title: { }</h1> */}
+            {/* <h1>Title: {card.title}</h1> */}
+          </div>}
+
       </h1>
     </>
   )
