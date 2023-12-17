@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import API from "../../services";
+import { ThemeContext } from "../../context/ThemeContext/Index";
 
 const EditCard = () => {
+  const { bgColor, textColor } = useContext(ThemeContext)
   const { id } = useParams();
   const [card, setCard] = useState();
   const [isLoading, setIsLoading] = useState(true);
@@ -21,30 +23,21 @@ const EditCard = () => {
       setIsLoading(false);
     }
   }
-
   useEffect(() => {
     getCard(id);
   }, [id])
 
-  console.log(card);
-
   return (
     <>
-      <h1>
+      <div
+        className={`h-screen p-10 flex items-center justify-center ${bgColor} ${textColor}`}>
         {!isLoading &&
-          <div>
-            Edit Card: {id}
+          <div
+            className={``}>
             {card.title}
-            {/* {card.title ?
-              <h1>Title: { }</h1>
-              :
-              'Loading'
-            } */}
-            {/* <h1>Title: { }</h1> */}
-            {/* <h1>Title: {card.title}</h1> */}
-          </div>}
 
-      </h1>
+          </div>}
+      </div>
     </>
   )
 }
