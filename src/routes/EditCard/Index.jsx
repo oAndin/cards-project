@@ -35,7 +35,6 @@ const EditCard = () => {
           <div
             className={``}>
             {card.title}
-
           </div>}
       </div>
     </>
