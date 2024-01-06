@@ -1,44 +1,39 @@
-// import { useEffect, useState } from "react";
-// import API from "../services";
+import axios from "axios";
+import { useEffect, useReducer } from "react";
 
-// const GetCards = () => {
+const httpReducer = (state, action) => {
+  switch (action.type) {
+    case "SEND":
+      return { data: null, error: null, loading: true };
+    case "SUCESS":
+      return { data: action.responseData, error: null, loading: false };
+    case "ERROR":
+      return { data: null, error: action.errorMessage, loading: false };
+    default:
+      return state;
+  }
+};
 
-//   const [cards, setCards] = useState([]);
+const useHttp = (url, method = "GET", body = null, dependencies = []) => {
+  const [httpState, dispatch] = useReducer(httpReducer, {
+    loading: false,
+    data: null,
+    error: null,
+  });
 
-//   async function getCards() {
-//     try {
-//       const response = await API.get('cards');
-//       console.log(response.data);
-//       // const data = response.data;
-//       setCards(response.data);
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   }
+  useEffect(() => {
+    const fetchData = async () => {
+      dispatch({ type: "SEND" })
+      try {
+        const response = await axios({ url, method, data: body });
+        dispatch({ type: "SUCESS", responseData: response.data })
+      } catch (error) {
+        dispatch({ type: "ERROR", errorMessage: "Error useCards hook" })
+      }
+    }
+    fetchData();
+  }, dependencies)
+  return httpState;
+};
 
-//   useEffect(() => {
-//     getCards();
-//   }, [])
-// }
-
-// export default GetCards;
-
-// const getCards = () => {
-//   const [cards, setCards] = useState([]);
-
-//   const getCards = async () => {
-//     try {
-//       const response = await API.get('cards')
-//       console.log(response.data);
-//     } catch (error) {
-//       console.log(error);
-//     }
-//     // finally {
-//     // }
-//   }
-
-//   useEffect(() => {
-//     getCards();
-//   }, [])
-// }
-// export default getCards;
+export default useHttp;
